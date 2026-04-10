@@ -13,7 +13,7 @@ public class Szyfry {
         }
 
         for(int i = 0; i < slowoDoSzyfrowania.length(); i++){
-            if(String.valueOf(slowoDoSzyfrowania.charAt(i)) != ""){
+            if(!String.valueOf(slowoDoSzyfrowania.charAt(i)).equals(" ")){
                 for(int j = 0; j < alfabet.size(); j++){
                     if(slowoDoSzyfrowania.charAt(i) == alfabet.get(j)){
                         if(j + kluczSzyfru > 26){
