@@ -1,12 +1,34 @@
+import java.util.ArrayList;
+
 public class Szyfry {
-    public static String szyfrujPrzestawieniowo(String slowoDoSzyfrowania){
+    public static String szyfrujPrzestawieniowo(String slowoDoSzyfrowania, int kluczSzyfru){
+        if(kluczSzyfru > 26){
+            kluczSzyfru -= 26;
+        }
         String zaszyfrowaneSlowo = "";
-        for(int i = 0; i < slowoDoSzyfrowania.length() - 1; i = i + 2){
-            zaszyfrowaneSlowo = zaszyfrowaneSlowo + slowoDoSzyfrowania.charAt(i + 1) + slowoDoSzyfrowania.charAt(i);
+        ArrayList<Character> alfabet = new ArrayList<>();
+
+        for(char znak = 'a'; znak <= 'z'; znak++){
+            alfabet.add(znak);
         }
-        if(slowoDoSzyfrowania.length() % 2 != 0){
-            zaszyfrowaneSlowo = zaszyfrowaneSlowo + slowoDoSzyfrowania.charAt(slowoDoSzyfrowania.length() - 1);
+
+        for(int i = 0; i < slowoDoSzyfrowania.length(); i++){
+            if(String.valueOf(slowoDoSzyfrowania.charAt(i)) != ""){
+                for(int j = 0; j < alfabet.size(); j++){
+                    if(slowoDoSzyfrowania.charAt(i) == alfabet.get(j)){
+                        if(j + kluczSzyfru > 26){
+                            kluczSzyfru -= 26;
+                        }
+                        zaszyfrowaneSlowo += String.valueOf(alfabet.get(j + kluczSzyfru));
+                    }
+                }
+            }
+            else{
+                zaszyfrowaneSlowo += " ";
+            }
+
         }
+
         return zaszyfrowaneSlowo;
     }
 }
