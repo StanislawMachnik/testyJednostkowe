@@ -6,19 +6,23 @@ import static org.junit.jupiter.api.Assertions.*;
 class SzyfryTest {
 
     @Test
-    void szyfrujPrzestawieniowoJezeliPusteSlowo() {
-        Assertions.assertEquals("", Szyfry.szyfrujPrzestawieniowo(""));
+    void DanePodstawowe() {
+        Assertions.assertEquals("def", Szyfry.szyfrujPrzestawieniowo("abc", 3));
     }
     @Test
-    void szyfrujPrzestawieniowoJezeliJednaLitera() {
-        Assertions.assertEquals("z", Szyfry.szyfrujPrzestawieniowo("z"));
+    void Zawijanie() {
+        Assertions.assertEquals("abc", Szyfry.szyfrujPrzestawieniowo("xyz", 3));
     }
     @Test
-    void szyfrujPrzestawieniowoJezeliParzystaDlugoscSlowa() {
-        Assertions.assertEquals("atam", Szyfry.szyfrujPrzestawieniowo("tama"));
+    void Odszyfrowanie() {
+        Assertions.assertEquals("abc", Szyfry.szyfrujPrzestawieniowo("def" , -3));
     }
     @Test
-    void szyfrujPrzestawieniowoJezeliNieParzystaDlugoscSlowa() {
-        Assertions.assertEquals("odemk", Szyfry.szyfrujPrzestawieniowo("domek"));
+    void KluczWiekszyNizDlugoscAlfabetu() {
+        Assertions.assertEquals("def", Szyfry.szyfrujPrzestawieniowo("abc", 29));
+    }
+    @Test
+    void SpacjaWTekscie() {
+        Assertions.assertEquals("cd ef", Szyfry.szyfrujPrzestawieniowo("ab cd", 2));
     }
 }
